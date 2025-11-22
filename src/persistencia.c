@@ -78,14 +78,14 @@ static int carregar_clientes_impl(Cliente **clientes, size_t *quantidade, const 
             continue;
         }
         limpar_trailing(token);
-        strncpy(item.endereco, token, MAX_ENDERECO - 1);
+        snprintf(item.endereco, MAX_ENDERECO, "%s", token);
 
         token = strtok(NULL, ";");
         if (!token) {
             continue;
         }
         limpar_trailing(token);
-        strncpy(item.telefone, token, MAX_TELEFONE - 1);
+        snprintf(item.telefone, MAX_TELEFONE, "%s", token);
 
         buffer[usados++] = item;
     }
@@ -147,7 +147,7 @@ static int carregar_produtos_impl(Produto **produtos, size_t *quantidade, const 
             continue;
         }
         limpar_trailing(token);
-        strncpy(item.nome, token, MAX_NOME - 1);
+        snprintf(item.nome, MAX_NOME, "%s", token);
 
         token = strtok(NULL, ";");
         if (!token) {
@@ -240,7 +240,7 @@ static int carregar_pedidos_impl(Pedido **pedidos, size_t *quantidade, const cha
             continue;
         }
         limpar_trailing(token);
-        strncpy(item.status, token, MAX_STATUS - 1);
+        snprintf(item.status, MAX_STATUS, "%s", token);
 
         buffer[usados++] = item;
     }
